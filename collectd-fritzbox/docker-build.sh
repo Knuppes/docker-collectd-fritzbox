@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker build --tag=jammsen/collectd-fritzbox:latest .
+docker build --tag=knuppes/collectd-fritzbox:latest .

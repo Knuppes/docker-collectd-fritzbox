@@ -1,6 +1,6 @@
-FROM jammsen/base:ubuntu-18.04
-
-LABEL maintainer="Sebastian Schmidt"
+FROM ubuntu:18.04
+  
+LABEL maintainer="Knuppes"
 
 ENV TIMEZONE=Europe/Berlin \
     DEBIAN_FRONTEND=noninteractive \
@@ -9,12 +9,15 @@ ENV TIMEZONE=Europe/Berlin \
     InfluxDbCollectdPort=25826 \
     FritzBoxIp=192.168.178.1 \
     FritzBoxUser=collectd \
-    FritzBoxPassword=mypassword 
+    FritzBoxPassword=mypassword
 
-RUN dpkg --add-architecture i386 \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install -y python-pip \
-    && pip install fritzcollectd 
+    && apt-get install -y libxml2-dev \
+    && apt-get install -y libxslt-dev \
+    && apt-get install -y python-dev \
+    && apt-get install -y zlib1g-dev \
+    && pip2 install fritzcollectd
 
 RUN apt-get install -y collectd
 
@@ -28,3 +31,4 @@ RUN chmod +x /start.sh
 ENV DEBUG=false
 
 CMD ["/start.sh"]
+
