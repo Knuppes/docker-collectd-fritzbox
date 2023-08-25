@@ -9,6 +9,7 @@ services:
       - ./influxdb.conf:/etc/influxdb/influxdb.conf
       - ./types.db:/usr/share/collectd/types.db
       - /data/influxdb:/var/lib/influxdb
+      - /mnt/FRITZ.NAS/FRITZNAS/Backup/influxdb:/backup
     ports:
       - "8086:8086"
       - "25826:25826/udp"
@@ -20,7 +21,7 @@ services:
     environment:
       - TIMEZONE=Europe/Berlin
       - CheckInterval=10
-      - InfluxDbIp=192.168.178.150
+      - InfluxDbIp=192.168.178.120
       - InfluxDbCollectdPort=25826
       - FritzBoxIp=192.168.178.1
       - FritzBoxUser=collectd
