@@ -9,7 +9,7 @@ services:
       - ./influxdb.conf:/etc/influxdb/influxdb.conf
       - ./types.db:/usr/share/collectd/types.db
       - /data/influxdb:/var/lib/influxdb
-      - /mnt/FRITZ.NAS/NAS_DISK/Backup/influxdb:/backup
+      - /mnt/FRITZ.NAS/NAS_DISK/Backup/influxdb_v1:/backup
     ports:
       - "8085:8086"
       - "25826:25826/udp"
